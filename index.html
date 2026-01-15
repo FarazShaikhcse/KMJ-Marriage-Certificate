@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KMJ Marriage Certificate</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="script.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #004f9e;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h2>KMJ Marriage Certificate</h2>
+
+  <div class="field">
+    <label>Issue Date</label>
+    <input id="date" type="date" />
+  </div>
+
+  <div class="field">
+    <label>Groom Name</label>
+    <input id="groomName" placeholder="Enter groom name" />
+  </div>
+
+  <div class="field">
+    <label>Groom Father Name</label>
+    <input id="groomFather" />
+  </div>
+
+  <div class="field">
+    <label>Groom Address</label>
+    <textarea id="groomAddress"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Groom Aadhaar Number</label>
+    <input id="groomAadhar" oninput="formatAadhar(this)" placeholder="XXXX XXXX XXXX" />
+  </div>
+
+  <div class="field">
+    <label>Bride Name</label>
+    <input id="brideName" placeholder="Enter bride name" />
+  </div>
+
+  <div class="field">
+    <label>Bride Father Name</label>
+    <input id="brideFather" />
+  </div>
+
+  <div class="field">
+    <label>Bride Address</label>
+    <textarea id="brideAddress"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Bride Aadhaar Number</label>
+    <input id="brideAadhar" oninput="formatAadhar(this)" placeholder="XXXX XXXX XXXX" />
+  </div>
+
+  <div class="field">
+    <label>Date of Marriage</label>
+    <input id="marriageDate" type="date" />
+  </div>
+
+  <div class="field">
+    <label>Place of Marriage</label>
+    <input id="marriagePlace" />
+  </div>
+
+  <div class="field">
+    <label>Marriage Register Number</label>
+    <input id="registerNo" />
+  </div>
+
+  <div class="field">
+    <label>Nikah Officiant</label>
+    <input id="officiant" placeholder="Name, Masjid, Place" />
+  </div>
+
+  <button onclick="generatePDF()">Generate & Download PDF</button>
+
+</div>
+</body>
+</html>
