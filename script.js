@@ -57,18 +57,18 @@ function generatePDF() {
   doc.setFontSize(12);
 
   // Issue date (right aligned)
-  doc.text(`Date: ${issueDate}`, 190, TOP_MARGIN , { align: "right" });
+  doc.text(`Date: ${issueDate}`, 185, TOP_MARGIN , { align: "right" });
 
   // Title
   doc.setFontSize(16);
   doc.text("MARRIAGE CERTIFICATE", 105, TOP_MARGIN + 10, { align: "center" });
 
-  doc.setFontSize(12);
+  doc.setFontSize(14);
 
   // ---- Inline paragraph renderer (NO overlap, supports bold) ----
   let xStart = 20;
   let y = TOP_MARGIN  + 30;
-  const pageRight = 190;
+  const pageRight = 180;
   const lineHeight = 8;
 
   function drawInlineParagraph(parts) {
@@ -124,3 +124,4 @@ function generatePDF() {
   // ---- Download ----
   doc.save("Marriage_Certificate.pdf");
 }
+
