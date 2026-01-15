@@ -66,7 +66,7 @@ function generatePDF() {
   doc.setFontSize(14);
 
   // ---- Inline paragraph renderer (NO overlap, supports bold) ----
-  let xStart = 20;
+  let xStart = 25;
   let y = TOP_MARGIN  + 30;
   const pageRight = 180;
   const lineHeight = 8;
@@ -115,7 +115,7 @@ function generatePDF() {
         `at ${marriagePlace}.`
     }
   ]);
-
+  y += 20;
   // ---- Remaining paragraphs ----
   drawInlineParagraph([
     { text: `This certificate is issued as per Marriage Registrar No. ${registerNo}. The marriage was solemnized by ${officiant}.` }
@@ -124,4 +124,5 @@ function generatePDF() {
   // ---- Download ----
   doc.save("Marriage_Certificate.pdf");
 }
+
 
