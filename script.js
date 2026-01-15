@@ -115,14 +115,15 @@ function generatePDF() {
         `at ${marriagePlace}.`
     }
   ]);
-  y += 20;
+  y += 15;
   // ---- Remaining paragraphs ----
   drawInlineParagraph([
-    { text: `This certificate is issued as per Marriage Registrar No. ${registerNo}. The marriage was solemnized by ${officiant}.` }
+    { text: `This certificate is issued as per Marriage Registrar No. ${registerNo}. The marriage was solemnized by ${officiant}. It was recorded in the relevant register of Karkala Muslim Jamath.` }
   ]);
 
   // ---- Download ----
   doc.save("Marriage_Certificate.pdf");
 }
+
 
 
