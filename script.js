@@ -45,12 +45,6 @@ function generatePDF() {
   const registerNo = document.getElementById("registerNo").value.trim();
   const officiant = document.getElementById("officiant").value.trim();
 
-  // ---- Aadhaar validation ----
-  if (groomAadharRaw.length !== 12 || brideAadharRaw.length !== 12) {
-    alert("Aadhaar number must be exactly 12 digits");
-    return;
-  }
-
   // ---- Create PDF ----
   const doc = new jsPDF();
   doc.setFont("Times", "Bold");
@@ -124,6 +118,7 @@ function generatePDF() {
   // ---- Download ----
   doc.save("Marriage_Certificate.pdf");
 }
+
 
 
 
