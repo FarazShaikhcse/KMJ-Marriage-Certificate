@@ -42,6 +42,7 @@ function generatePDF() {
     .value.replace(/\s/g, "");
 
   const marriagePlace = document.getElementById("marriagePlace").value.trim();
+  const bookNo = document.getElementById("bookNo").value.trim();
   const registerNo = document.getElementById("registerNo").value.trim();
   const officiant = document.getElementById("officiant").value.trim();
 
@@ -112,12 +113,29 @@ function generatePDF() {
   y += 15;
   // ---- Remaining paragraphs ----
   drawInlineParagraph([
-    { text: `This certificate is issued as per Marriage Registrar No. ${registerNo}. The marriage was solemnized by ${officiant}. It was recorded in the relevant register of Karkala Muslim Jamath.` }
-  ]);
+  {
+    text:
+      `This certificate is issued as per Marriage Book No. ${bookNo}, ` +
+      `Register No. ${registerNo}. ` +
+      `The marriage was solemnized by ${officiant}. ` +
+      `It was recorded in the relevant register of Karkala Muslim Jamath.`
+  }
+]);
 
-  // ---- Download ----
-  doc.save("Marriage_Certificate.pdf");
+  const fileName =
+  `marriage_certificate_${groomName}_${brideName}`
+    .toLowerCase()
+    .replace(/\s+/g, "_")
+    .replace(/[^a-z0-9_]/g, "") +
+  ".pdf";
+  
+  // ---- Download PDF ----
+  doc.save(fileName);
+  const pdfBlob = doc.output("blob");
+  const pdfUrl = URL.createObjectURL(pdfBlob);
+  window.open(pdfUrl);
 }
+
 
 
 
